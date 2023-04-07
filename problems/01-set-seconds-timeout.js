@@ -24,8 +24,16 @@ setSecondsTimeout(function () {
 ***********************************************************************/
 
 function setSecondsTimeout(cb, delayInSeconds) {
-  // Your code here
+  setTimeout(cb, delayInSeconds*1000)
 }
+
+setSecondsTimeout(function () {
+    console.log('hello');
+}, 1)
+
+setSecondsTimeout(function () {
+    console.log('world');
+}, 1.4)
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

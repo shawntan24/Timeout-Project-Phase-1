@@ -33,9 +33,29 @@ console.log(timeoutObjs); // [ Timeout {...},  Timeout {...}, Timeout {...} ]
 ***********************************************************************/
 
 function batchTimeouts(callbacks, delays) {
-  // Your code here
+  let objArray = [];
+
+  for (let i = 0; i < callbacks.length; i++){
+    let timeout = setTimeout(callbacks[i], delays[i]);
+    objArray.push(timeout);
+  }
+  return objArray;
 }
 
+
+const sayHello = () => console.log('hi');
+const sayGoodbye = () => console.log('bye');
+const shout = () => console.log('WHAT?');
+const tasks = [sayHello, sayGoodbye, shout];
+const delays = [500, 200, 900];
+
+const timeoutObjs = batchTimeouts(tasks, delays); 
+// should print: 
+//  'bye' after 200 ms
+//  'hi' after 500 ms
+//  'WHAT?' after 900 ms
+
+console.log(timeoutObjs); // [ Timeout {...},  Timeout {...}, Timeout {...} ]
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = batchTimeouts;
